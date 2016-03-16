@@ -47,7 +47,7 @@ describe('Recipe Test', function() {
 
         it('GET /recipe - should return the recipe pancakes', function(done) {
             request(config.url)
-                .get('/api/recipe/')
+                .get('/api/recipe/random')
                 .expect(200)
                 .expect('Content-Type', /json/)
                 .end(function(err, res) {

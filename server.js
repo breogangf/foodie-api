@@ -42,6 +42,8 @@ var router = express.Router();
 // Create endpoint handlers for /refuel
 router.route('/recipe')
   .post(recipeController.addRecipe)
+
+router.route('/recipe/random')
   .get(recipeController.getRandomRecipe);
 
 // Register all our routes with /api
