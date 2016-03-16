@@ -37,3 +37,22 @@ exports.getRandomRecipe = function(req, res) {
     });
   });
 };
+
+//GET - Return all recipes in the DB
+exports.getAllRecipes = function(req, res) {
+  Recipe.find({}, function (err, recipes) {
+            if (err) res.send(500, err.recipe);
+            //console.log(recipes);
+            res.status(200).jsonp(recipes);
+        });
+};
+
+// Create endpoint /api/recipe/:recipe_id for GET
+exports.getRecipeById = function(req, res) {
+  // Use the Recipe model to find a specific recipe
+  Recipe.findById(req.params.recipe_id, function(err, recipe) {
+    if (err) res.send(err);
+    //console.log(recipe);
+    res.json(recipe);
+  });
+};
