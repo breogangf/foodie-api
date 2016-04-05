@@ -11,7 +11,8 @@ exports.addRecipe = function(req, res) {
           category: req.body.category,
           cook_time: req.body.cook_time,
           ingredients: req.body.ingredients,
-          directions: req.body.directions
+          directions: req.body.directions,
+          image: req.body.image
         });
 
         recipe.save(function (err, recipe) {

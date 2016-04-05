@@ -34,6 +34,7 @@ describe('Recipe Test', function() {
                     "name" : "Pancakes",
                     "category" : "Snack",
                     "cook_time" : 20,
+                    "image": "example.jpg" ,
                     "ingredients" : [{"name" : "eggs", "quantity" : "six"},
                                     {"name" : "banana", "quantity" : "Medium size banana"}],
                     "directions" : [{"step" : 1, "description" : "Beat egg until fluffy."},
@@ -55,6 +56,7 @@ describe('Recipe Test', function() {
                     "name" : "Fajitas",
                     "category" : "Meal",
                     "cook_time" : 15,
+                    "image": null,
                     "ingredients" : [{"name" : "tortillas", "quantity" : "4"},
                                     {"name" : "chicken", "quantity" : "400gr"},
                                     {"name" : "red peper", "quantity" : "small piece"},
@@ -93,6 +95,7 @@ describe('Recipe Test', function() {
                     res.body[0].should.have.property('name', 'Pancakes');
                     res.body[0].should.have.property('category', 'Snack');
                     res.body[0].should.have.property('cook_time', 20);
+                    res.body[0].should.have.property('image', 'example.jpg');
 
                     res.body[0].should.have.property('ingredients').with.lengthOf(2);
                     res.body[0].ingredients[0].should.have.property('name', "eggs");
@@ -109,6 +112,7 @@ describe('Recipe Test', function() {
                     res.body[1].should.have.property('name', 'Fajitas');
                     res.body[1].should.have.property('category', 'Meal');
                     res.body[1].should.have.property('cook_time', 15);
+                    res.body[1].should.have.property('image', null);
 
                     res.body[1].should.have.property('ingredients').with.lengthOf(7);
                     res.body[1].ingredients[0].should.have.property('name', "tortillas");
@@ -156,6 +160,8 @@ describe('Recipe Test', function() {
                     res.body.should.have.property('name', 'Pancakes');
                     res.body.should.have.property('category', 'Snack');
                     res.body.should.have.property('cook_time', 20);
+                    res.body.should.have.property('image', 'example.jpg');
+
 
                     res.body.should.have.property('ingredients').with.lengthOf(2);
                     res.body.ingredients[0].should.have.property('name', "eggs");
@@ -184,6 +190,7 @@ describe('Recipe Test', function() {
                     res.body.should.have.property('name', 'Fajitas');
                     res.body.should.have.property('category', 'Meal');
                     res.body.should.have.property('cook_time', 15);
+                    res.body.should.have.property('image', null);
 
                     res.body.should.have.property('ingredients').with.lengthOf(7);
                     res.body.ingredients[0].should.have.property('name', "tortillas");
@@ -214,7 +221,6 @@ describe('Recipe Test', function() {
                     res.body.directions[4].should.have.property('description', "Add you desired quantity of black peper and remove until the chicken is done.");
                     res.body.directions[5].should.have.property('step', 6);
                     res.body.directions[5].should.have.property('description', "Place your tortillas in a dish and roll them with your chicken and some salad.");
-
 
                     done();
                 });

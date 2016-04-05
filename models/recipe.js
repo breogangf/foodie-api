@@ -19,7 +19,8 @@ var RecipeSchema   = new mongoose.Schema({
   		category: String,
 		cook_time: Number,
 		ingredients: [IngredientSchema],
-		directions: [DirectionSchema]
+		directions: [DirectionSchema],
+		image: String 
 });
 
 // Export the Mongoose model
