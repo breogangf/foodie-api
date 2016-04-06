@@ -4,6 +4,9 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var methodOverride  = require("method-override");
 var recipeController = require('./controllers/recipe');
+var viewController = require('./controllers/view');
+var pictureController = require('./controllers/picture');
+
 var config = require('./config');
 
 // Connection to DB
@@ -30,6 +33,7 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 app.use(express.static(__dirname + '/public'));
 
+
 // permit cross-origin resource sharing
 app.all('*', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -39,6 +43,13 @@ app.all('*', function(req, res, next) {
 
 // Create our Express router
 var router = express.Router();
+
+// Create endpoint handlre for /
+router.route('/')
+.get(viewController.getUploadForm);
+
+router.route('/upload')
+  .post(pictureController.uploadPicture);
 
 // Create endpoint handlers for /refuel
 router.route('/recipe')
