@@ -1,0 +1,45 @@
+<!doctype html>  
+<html lang="en" ng-app="foodie">  
+<head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Foodie web app</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+</head>  
+<body ng-controller="mainController">  
+    <div class="container"> 
+    <!--Header-->
+        <div class="jumbotron text-center">
+        <image ng-src="/images/{{recipe.image}}"/>
+            <h1> {{ recipe.name }} </h1>
+            <h3>
+                <i class="fa fa-history" style="font-size:24px"></i> {{ recipe.cook_time }}" &nbsp; <i class="fa fa-cutlery" style="font-size:24px"></i> {{ recipe.category }} 
+
+            </h3>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3 col-md-offset-2">
+                <h3> Ingredients </h3>
+                <div class="checkbox" ng-repeat="ingredient in recipe.ingredients">
+                    <label>
+                        <input type="checkbox" > {{ ingredient.name }}, {{ ingredient.quantity }}
+                    </label>
+                 </div>
+            </div>
+            <div class="col-sm-6">
+                <h3> Steps </h3>
+                <div class="checkbox" ng-repeat="step in recipe.directions">
+                    <label>
+                        <input type="checkbox" > {{ step.step }}, {{ step.description }}
+                    </label>
+                 </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script> <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script> 
+    <script src="main.js"></script>
+</body>  
+</html> 
