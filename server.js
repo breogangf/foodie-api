@@ -65,6 +65,10 @@ router.route('/recipe/random')
 // Register all our routes with /api
 app.use('/api', router);
 
+app.get('*', function(req, res) {  
+    res.sendFile(__dirname + '/public/index.html');                
+});
+
 // Start server
 app.listen(port, ip, function() {
     console.log("Node server running on " + config.url);
