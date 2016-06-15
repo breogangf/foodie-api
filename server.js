@@ -33,7 +33,6 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 app.use(express.static(__dirname + '/public'));
 
-
 // permit cross-origin resource sharing
 app.all('*', function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
@@ -41,33 +40,38 @@ app.all('*', function(req, res, next) {
     next();
 });
 
-// Create our Express router
-var router = express.Router();
+// Create our Express api router
+var api_router = express.Router();
 
-// Create endpoint handlre for /
-router.route('/')
-.get(viewController.getUploadForm);
-
-router.route('/upload')
-  .post(pictureController.uploadPicture);
-
-// Create endpoint handlers for /refuel
-router.route('/recipe')
+// Create endpoint handlers for /recipe
+api_router.route('/recipe')
   .post(recipeController.addRecipe)
   .get(recipeController.getAllRecipes)
 
-router.route('/recipe/:recipe_id')
+api_router.route('/recipe/:recipe_id')
 .get(recipeController.getRecipeById)
 
-router.route('/recipe/random')
+api_router.route('/recipe/random')
   .get(recipeController.getRandomRecipe);
 
-// Register all our routes with /api
-app.use('/api', router);
+api_router.route('/upload')
+  .post(pictureController.uploadPicture)
 
-app.get('*', function(req, res) {  
-    res.sendFile(__dirname + '/public/index.html');                
-});
+app.use('/api', api_router);
+
+
+
+// Create our Express view router
+var view_router = express.Router();
+
+//TODO return list.jade
+//TODO return detail.jade
+
+view_router.route('/upload_pic')
+  .get(viewController.getUploadForm)
+
+app.use('/recipe', view_router);
+
 
 // Start server
 app.listen(port, ip, function() {
