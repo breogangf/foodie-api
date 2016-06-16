@@ -64,9 +64,6 @@ app.use('/api', api_router);
 // Create our Express view router
 var view_router = express.Router();
 
-//TODO return list.jade
-//TODO return detail.jade
-
 view_router.route('/upload_pic')
   .get(viewController.getUploadForm)
 
