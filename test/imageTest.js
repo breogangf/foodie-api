@@ -11,7 +11,7 @@ describe('Image Test', function() {
 
 it('GET /images/example.jpg - should return image file', function(done) {
             request(config.url)
-                .get('/images/example.jpg')
+                .get('/images/recipes/example.jpg')
                 .expect(200)
                 .expect('Content-Type', 'image/jpeg')
                 .end(function(err, res) {

@@ -31,7 +31,7 @@ app.use(bodyParser.urlencoded({
 // Middlewares
 app.use(bodyParser.json());
 app.use(methodOverride());
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/app'));
 
 // permit cross-origin resource sharing
 app.all('*', function(req, res, next) {

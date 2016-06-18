@@ -17,7 +17,7 @@ exports.uploadPicture = function (req, res){
     /* The file name of the uploaded file */
     var file_name = this.openedFiles[0].name;
     /* Location where we want to copy the uploaded file */
-    var new_location = 'public/images/';
+    var new_location = 'app/images/recipes/';
 
     fs.copy(temp_path, new_location + file_name, function(err) {  
       if (err) {
